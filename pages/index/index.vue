@@ -1,8 +1,8 @@
 <template>
 	<view class="container flex justify-center full">
 		<view class="startButtom">
-			<view class="circle">
-				<navigator url="/pages/BP/index" class="full">
+			<view class="circle ">
+				<navigator url="/pages/index/seting" class="full flex justify-center align-center">	创建比赛
 				</navigator>
 			</view>
 		</view>

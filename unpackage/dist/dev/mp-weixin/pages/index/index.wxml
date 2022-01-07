@@ -1,1 +1,1 @@
-<view class="container flex justify-center full"><view class="startButtom"><view class="circle"><navigator class="full" url="/pages/BP/index"></navigator></view></view></view>
+<view class="container flex justify-center full"><view class="startButtom"><view class="circle "><navigator class="full flex justify-center align-center" url="/pages/index/seting">创建比赛</navigator></view></view></view>

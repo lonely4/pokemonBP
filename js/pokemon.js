@@ -1,7 +1,8 @@
 const pokemonData = require('@/data/pokemonData.json');
 class Pokemons {
 	constructor(pkData) {
-		this.pkData = pkData
+		this.pkDataObj=pkData
+		this.pkDataList = Object.keys(pkData).map(name=>pkData[name])
 		this.pkByType = {}
 		for (const name in pkData) {
 			const pokemon = pkData[name]
@@ -10,9 +11,9 @@ class Pokemons {
 				type = type.replace(' ', '')
 				if (type == 0) continue
 				if (!this.pkByType[type]) {
-					this.pkByType[type] = {}
+					this.pkByType[type] = []
 				}
-				this.pkByType[type][name] = pokemon
+				this.pkByType[type].push(pokemon)
 			}
 		}
 	}
@@ -20,21 +21,21 @@ class Pokemons {
 		if (type) {
 			return this.pkByType[type]
 		}
-		return this.pkData
+		return this.pkDataList
 	}
 	getPkTypes() {
 		return Object.keys(this.pkByType)
 	}
 	getPkByName(name) {
-		let pokemons = {}
-		if (this.pkData[name]) {
-			pokemons[name] = this.pkData[name]
+		let pokemons = []
+		if (this.pkDataObj[name]) {
+			pokemons.push(this.pkDataObj[name])
 			return pokemons
 		}
 		const reg = new RegExp(name, 'g')
-		Object.keys(this.pkData).forEach(n => {
+		Object.keys(this.pkDataObj).forEach(n => {
 			if (reg.test(n)) {
-				polemons[n] = this.pkData[n]
+				polemons.push(this.pkDataObj[n])
 			}
 		})
 		return pokemons

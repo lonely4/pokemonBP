@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/BP/index"
+    "pages/BP/index",
+    "pages/index/seting"
   ],
   "subPackages": [],
   "window": {

@@ -3,16 +3,23 @@
 		"path": "pages/index/index",
 		"style": {
 			"navigationBarTitleText": "初始界面"
-			
+
 		}
 	}, {
 		"path": "pages/BP/index",
 		"style": {
 			"enablePullDownRefresh": false,
-			"pageOrientation":"landscape",
-			"disableScroll":true,
-			"navigationStyle":"custom"
-			
+			"pageOrientation": "landscape",
+			"disableScroll": true,
+			"navigationStyle": "custom"
+
+		}
+	}, {
+		"path": "pages/index/seting",
+		"style": {
+			"enablePullDownRefresh": false,
+			"disableScroll": true,
+			"navigationBarTitleText": "比赛设置"
 		}
 	}],
 	"globalStyle": {

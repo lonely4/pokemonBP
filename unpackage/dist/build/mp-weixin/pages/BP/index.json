@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": false,
+  "pageOrientation": "landscape",
+  "disableScroll": true,
+  "navigationStyle": "custom",
+  "usingComponents": {}
+}

@@ -27,7 +27,7 @@
 						{{pkType}}
 					</text>
 				</view>
-				<scroll-view :scroll-top="scrollTop" enable-flex scroll-y show-scrollbar
+				<scroll-view :scroll-top="scrollTop" @scroll="scroll" enable-flex scroll-y show-scrollbar
 					class="pokemonArae flex justify-center flex-wrap">
 					<view class="pokemon  flex align-center justify-center" v-for="pk of pkList" :key="pk.chinese_name">
 						{{pk.chinese_name}}
@@ -62,19 +62,20 @@
 				pkTypes: [],
 				pkList: [],
 				scrollTop: 0,
+				oldScrollTop:0
 			};
 		},
 		methods: {
-			clickType(type) {
-				let sss = pokemons.getPkByType(type === '全部' ? null : type)
-				console.log('type',type)
-				console.log('sss',sss)
-				this.pkList = pokemons.getPkByType(type === '全部' ? null : type)
+			scroll(e) {
+				this.oldScrollTop = e.detail.scrollTop
 			},
-			scroll() {
-
-			}
-
+			clickType(type) {
+				this.pkList = pokemons.getPkByType(type === '全部' ? null : type)
+				this.scrollTop=this.oldScrollTop
+				this.$nextTick(function() {
+					this.scrollTop = 0
+				});
+			},
 		},
 	}
 </script>
