@@ -11,11 +11,8 @@
 				<switch @change="changeBanMA" />
 			</uni-forms-item>
 			<uni-forms-item label='创建者红蓝方'>
-				<radio-group @change="radioChange">
-					<radio value="random" checked />
-					<radio value="red"  />
-					<radio value="blue"  />
-				</radio-group>
+				<uni-data-checkbox v-model="setingData.createWay" :localdata="creatWayData">
+				</uni-data-checkbox>
 			</uni-forms-item>
 		</uni-forms>
 		<view class="invite w-full">
@@ -36,8 +33,19 @@
 				setingData: {
 					banNum: 3,
 					pickNum: 6,
-					banMA: false
+					banMA: false,
+					createWay: 'red'
 				},
+				creatWayData: [{
+					"value": 'red',
+					"text": "红色方"
+				}, {
+					"value": 'blue',
+					"text": "蓝色方"
+				}, {
+					"value": 'random',
+					"text": "随机"
+				}],
 				rules: {
 					banNum: {
 						rules: [{
@@ -63,8 +71,8 @@
 			}
 		},
 		methods: {
-			changeBanMA(e) {
-				this.setingData.banMA = e.detail.value
+			changeBanMA() {
+				this.setingData.banMA = !this.setingData.banMA
 			},
 			invite() {
 
@@ -72,21 +80,22 @@
 			start() {
 				this.$refs.form.validate().then(res => {
 					uni.redirectTo({
-						url: `/pages/BP/index?banNum=${this.setingData.banNum}&pickNum=${this.setingData.pikeNum}&banMA=${this.setingData.banMA}`
+						url: `/pages/BP/index?${Object.keys(this.setingData).map(key=>`&${key}=${this.setingData[key]}`).join('').slice(1)}`
 					})
 				}).catch(e => {
 					console.log(e)
 				})
-			}
+			},
 		}
 	}
 </script>
 
-<style >
-	.uni-forms-item__content{
+<style>
+	.uni-forms-item__content {
 		display: flex;
 		align-items: center;
 	}
+
 	.main {
 		position: relative;
 		box-sizing: border-box;

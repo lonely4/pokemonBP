@@ -2,7 +2,7 @@
 	<view class="full flex-col">
 		<view class="w-full head flex  justify-between align-center">
 			<view class="leftB flex">
-				<view class="BCircle text-center" v-for="item of leftB" :key="item+'left'">
+				<view class="BCircle text-center" v-for="item of leftB" :key="item">
 					{{item}}
 				</view>
 			</view>
@@ -10,14 +10,14 @@
 				禁用
 			</view>
 			<view class="rightB flex">
-				<view class="BCircle text-center" v-for="item of rightB" :key="item+'right'">
+				<view class="BCircle text-center" v-for="item of rightB" :key="item">
 					{{item}}
 				</view>
 			</view>
 		</view>
 		<view class="container flex ">
 			<view class="leftP h-full flex flex-col justify-center align-center">
-				<view class="PCircle text-center" v-for="item of leftP" :key="item+'pright11'">
+				<view class="PCircle text-center" v-for="item of leftP" :key="item">
 					{{item}}
 				</view>
 			</view>
@@ -29,7 +29,9 @@
 				</view>
 				<scroll-view :scroll-top="scrollTop" @scroll="scroll" enable-flex scroll-y show-scrollbar
 					class="pokemonArae flex justify-center flex-wrap">
-					<view class="pokemon  flex align-center justify-center" v-for="pk of pkList" :key="pk.chinese_name">
+					<view
+						v-bind:class="['pokemon',  'sprite-icon',`sprite-icon-${pk.id<100?(pk.id<10?'00'+pk.id:('0'+pk.id)):pk.id}` ]"
+						v-for="pk of pkList" :key="pk.chinese_name">
 						{{pk.chinese_name}}
 					</view>
 					<view class="">
@@ -38,7 +40,7 @@
 				</scroll-view>
 			</view>
 			<view class="rightP h-full flex flex-col justify-center align-center">
-				<view class="PCircle text-center" v-for="item of rightP" :key="item+'pright'">
+				<view class="PCircle text-center" v-for="item of rightP" :key="item">
 					{{item}}
 				</view>
 			</view>
@@ -47,6 +49,7 @@
 </template>
 
 <script>
+	import pekemonIcon from '@/style/pokemonIcon.css'
 	import pokemons from '../../js/pokemon.js'
 	export default {
 		onLoad: function() {
@@ -62,7 +65,7 @@
 				pkTypes: [],
 				pkList: [],
 				scrollTop: 0,
-				oldScrollTop:0
+				oldScrollTop: 0
 			};
 		},
 		methods: {
@@ -71,7 +74,7 @@
 			},
 			clickType(type) {
 				this.pkList = pokemons.getPkByType(type === '全部' ? null : type)
-				this.scrollTop=this.oldScrollTop
+				this.scrollTop = this.oldScrollTop
 				this.$nextTick(function() {
 					this.scrollTop = 0
 				});

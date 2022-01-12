@@ -1,5 +1,5 @@
 
-.uni-forms-item__content{
+.uni-forms-item__content {
 	display: flex;
 	align-items: center;
 }
