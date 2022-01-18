@@ -38,7 +38,6 @@
         "packNpmRelationList": [],
         "minifyWXSS": true,
         "disableUseStrict": false,
-        "useStaticServer": false,
         "showES6CompileOption": false,
         "useCompilerPlugins": false
     },

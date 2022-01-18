@@ -1,8 +1,8 @@
 const pokemonData = require('@/data/pokemonData.json');
 class Pokemons {
 	constructor(pkData) {
-		this.pkDataObj=pkData
-		this.pkDataList = Object.keys(pkData).map(name=>pkData[name])
+		this.pkDataObj = pkData
+		this.pkDataList = Object.keys(pkData).map(name => pkData[name])
 		this.pkByType = {}
 		for (const name in pkData) {
 			const pokemon = pkData[name]
@@ -27,6 +27,8 @@ class Pokemons {
 		return Object.keys(this.pkByType)
 	}
 	getPkByName(name) {
+		
+
 		let pokemons = []
 		if (this.pkDataObj[name]) {
 			pokemons.push(this.pkDataObj[name])
@@ -41,6 +43,7 @@ class Pokemons {
 		return pokemons
 	}
 }
+
 // "妙蛙种子": {
 //        "chinese_name": "妙蛙种子",
 //        "id": 1,

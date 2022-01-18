@@ -97,6 +97,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = _vm.pkDetail.type.join(",")
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -181,8 +190,43 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _pokemonIcon = _interopRequireDefault(__webpack_require__(/*! @/style/pokemonIcon.css */ 28));
-var _pokemon = _interopRequireDefault(__webpack_require__(/*! ../../js/pokemon.js */ 29));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+var _pokemon = _interopRequireDefault(__webpack_require__(/*! @/js/pokemon.js */ 29));
+var _abilityExplain = _interopRequireDefault(__webpack_require__(/*! @/js/abilityExplain.js */ 107));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -232,7 +276,41 @@ var _pokemon = _interopRequireDefault(__webpack_require__(/*! ../../js/pokemon.j
 //
 //
 //
-var _default = { onLoad: function onLoad() {this.pkTypes = ['全部'].concat(_pokemon.default.getPkTypes());this.pkList = _pokemon.default.getPkByType();}, data: function data() {return { leftB: [1, 2, 3], rightB: [1, 2, 3], leftP: [1, 2, 3, 4, 5, 6], rightP: [1, 2, 3, 4, 5, 6], pkTypes: [], pkList: [], scrollTop: 0, oldScrollTop: 0 };}, methods: { scroll: function scroll(e) {this.oldScrollTop = e.detail.scrollTop;}, clickType: function clickType(type) {this.pkList = _pokemon.default.getPkByType(type === '全部' ? null : type);this.scrollTop = this.oldScrollTop;this.$nextTick(function () {this.scrollTop = 0;});} } };exports.default = _default;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { onLoad: function onLoad() {this.pkTypes = ['全部'].concat(_pokemon.default.getPkTypes());this.pkList = _pokemon.default.getPkByType();}, data: function data() {return { leftB: [1, 2, 3], rightB: [1, 2, 3], leftP: [1, 2, 3, 4, 5, 6], rightP: [1, 2, 3, 4, 5, 6], pkTypes: [], pkList: [], scrollTop: 0, oldScrollTop: 0, selecting: true, preSelectPk: null, pkDetailShow: true, pkDetail: { "chinese_name": "妙蛙种子", "id": 1, "japanese_name": "フシギダネ", "english_name": "Bulbasaur", "height": "0.7", "weight": "6.9", "type": ["草", "毒"], "ability": ["茂盛"], "隐藏特性": ["叶绿素"], "进化": "妙蛙草", "进化等级": 16, "属性相性": { "一般": 1.0, "格斗": 0.5, "飞行": 2.0, "毒": 1.0, "地面": 1.0, "岩石": 1.0, "虫": 1.0, "幽灵": 1.0, "钢": 1.0, "火": 2.0, "水": 0.5, "草": 0.25, "电": 0.5, "超能力": 2.0, "冰": 2.0, "龙": 1.0, "恶": 1.0, "妖精": 0.5 } } };}, methods: { scroll: function scroll(e) {this.oldScrollTop = e.detail.scrollTop;}, clickType: function clickType(type) {this.pkList = _pokemon.default.getPkByType(type === '全部' ? null : type);this.scrollTop = this.oldScrollTop;this.$nextTick(function () {this.scrollTop = 0;});this.preSelectPk = null;}, clickPK: function clickPK(pk) {if (pk.id === this.preSelectPk.id) {this.pkDetail = pk;this.pkDetailShow = true;return;}this.preSelectPk = pk;} }, computed: { attrRestraint: function attrRestraint() {console.log(this.pkDetail["属性相性"]);return this.pkDetail["属性相性"];} } };exports.default = _default;
 
 /***/ }),
 
